@@ -26,13 +26,10 @@ Ability to import employees over a CSV file
 ```bash
 cd /path/to/Root/APP
 
-docker build -t myemployee .
+docker-compose up --build
 
 ``` 
-
-```bash
-docker run -p 8787:8787 -it myemployee
-``` 
+Then check localhost:3000 , and it depends on your env files confguration. 
 
 # ENV file
 
@@ -41,6 +38,76 @@ You may edit PORT and REACT_APP_API_BASE_URL for deploying on "Play with Docker"
 ## Tree
 
 ```bash
+.
+├── client
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   └── src
+│       ├── App.css
+│       ├── App.js
+│       ├── App.test.js
+│       ├── Components
+│       │   ├── AddLoggedUser.js
+│       │   ├── ButtonAddUser.js
+│       │   ├── ButtonEdditUser.js
+│       │   ├── Comments.js
+│       │   ├── Employees.js
+│       │   ├── HeaderNav.js
+│       │   ├── ImportCSVui.js
+│       │   ├── InputForm.js
+│       │   ├── InsertComment.js
+│       │   └── Toolbar.js
+│       ├── Context
+│       │   ├── AddUserContext.js
+│       │   └── AuthUser.js
+│       ├── index.css
+│       ├── index.js
+│       ├── logo.svg
+│       ├── reportWebVitals.js
+│       ├── Route.js
+│       ├── service-worker.js
+│       ├── serviceWorkerRegistration.js
+│       ├── setupTests.js
+│       └── Views
+│           ├── Home
+│           │   └── index.js
+│           ├── Profile
+│           │   └── index.js
+│           └── Registration
+│               ├── index.js
+│               ├── signin.js
+│               └── signup.js
+├── docker-compose.yml
+├── README.md
+└── server
+    ├── app.js
+    ├── bin
+    │   └── www
+    ├── db
+    │   └── config.db.js
+    ├── Dockerfile
+    ├── package.json
+    ├── package-lock.json
+    ├── routes
+    │   ├── comment.js
+    │   ├── deleteuser.js
+    │   ├── index.js
+    │   ├── signin.js
+    │   ├── signup.js
+    │   ├── upload.js
+    │   └── users.js
+    ├── tmp
+    └── views
+        ├── error.ejs
+        └── index.ejs
 
 ```
 

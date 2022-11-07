@@ -1,0 +1,37 @@
+version: '3.8'
+services:     
+    myexpress:
+      build: ./server
+      restart: unless-stopped
+      env_file: ./.env
+      ports:
+        - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+        - 9229:9229
+      networks:
+        - backend
+        - frontend
+    myreact:
+      depends_on:
+        - myexpress
+      env_file: ./.env  
+      build:
+        context: ./client
+        args:
+
+          #don't think that it work; yes it work cause in react file i use "| localhost:8787"
+          #- REACT_APP_API_BASE_URL=${MYSERVER_API_BASE}
+
+          
+      
+          #******FOR DOCKER PLAY- REACT_APP_API_BASE_URL=$MYSERVER_API_BASE
+          #- REACT_APP_API_BASE_URL=$CLIENT_API_BASE_URL
+          - REACT_APP_API_BASE_URL=$REACT_APP_API_BASE_URL
+
+      ports:
+        - $REACT_LOCAL_PORT:$REACT_DOCKER_PORT
+      networks:
+        - frontend  
+
+networks:
+  backend:
+  frontend:

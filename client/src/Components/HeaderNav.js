@@ -47,7 +47,7 @@ function HeaderNav() {
                     </Link>
                     </Level.Item>
                     <Level.Item>
-                    <Link to={`/profile/${useAuth.username}`}>
+                    <Link to={`/profile/${authUser.username}`}>
                     Profile
                     </Link>
                     </Level.Item>

@@ -57,7 +57,7 @@ function HeaderNav() {
                          
                             <Level.Item>
                                 {
-                                    (!useAuth)
+                                    (!authUser)
                                     ?<Link to="/">Registration</Link>
                                     :<Button
                                     rounded color="link" onClick={() => logout()}>

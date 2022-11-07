@@ -28,7 +28,7 @@ router.post('/', function (req, res, next) {
       console.log(req.session.id)
       req.session.save((err)=>{
         console.log(err)
-        res.json({ fromValidate })
+        res.json({ username:fromValidate.username })
       })
     
     }

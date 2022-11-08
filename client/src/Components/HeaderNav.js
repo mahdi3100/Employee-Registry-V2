@@ -38,9 +38,14 @@ function HeaderNav() {
                     </Level.Side>
                     <Level.Side align="right">
                     <Level.Item>
-            Hello ,<b>
-             {authUser}
-            </b>
+           
+                  {
+(authUser && <>
+    Hello ,<b>
+{authUser}
+</b>
+</> )
+                  }  
                   
                    
                     </Level.Item>

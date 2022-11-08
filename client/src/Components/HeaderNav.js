@@ -46,12 +46,19 @@ function HeaderNav() {
                     Home
                     </Link>
                     </Level.Item>
+                    {
+                        (authUser &&
+
                     <Level.Item>
+                      
+                            
+                       
                     <Link to={`/profile/${authUser.username}`}>
                     Profile
                     </Link>
                     </Level.Item>
-                                    
+                    )
+                    }  
 
                                 
                          

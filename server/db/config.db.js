@@ -53,7 +53,7 @@ class mydb {
 
 
 
-          user.find({}, { projection: { passowrd: 0, comments: 0 } }).sort({ _id: -1 }).toArray(function (err, result) {
+          user.find({}, { projection: { password: 0, comments: 0 } }).sort({ _id: -1 }).toArray(function (err, result) {
             if (err) reject(err);
             resolve(result)
 

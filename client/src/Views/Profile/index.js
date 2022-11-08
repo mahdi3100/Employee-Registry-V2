@@ -152,6 +152,8 @@ const Profile = (props) => {
   let location = useLocation();
   let navigate = useNavigate();
   const { logout } = useAuth()
+  console.log("rrrrrrrr")
+  console.log(location)
   return (<ProfileClass logout={logout} location={location} navigate={navigate} />)
 };
 

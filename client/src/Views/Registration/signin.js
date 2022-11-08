@@ -62,8 +62,7 @@ class Signin extends React.Component {
 
         }
 
-
-        return this.setState({ userLoadInfo: res.fromValidate });
+        return this.setState({ userLoadInfo: res.username });
 
 
 

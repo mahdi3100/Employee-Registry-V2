@@ -12,11 +12,13 @@ import {
   import {useAuth } from "../Context/AuthUser"
 
 function HeaderNav() {
+    let activeStyle = {
+        textDecoration: "underline",
+        fontWeight: "bold"
 
+      };
     const {authUser,logout} = useAuth()
-    console.log("Im on NAV")
-    console.log(authUser)
-   
+
     return (
         <Box>
             <Level>
@@ -32,19 +34,24 @@ function HeaderNav() {
 
                         </Heading>
                     </Level.Item>
+         
+                    </Level.Side>
+                    <Level.Side align="right">
                     <Level.Item>
-            <b>
-             {useAuth.username}
+            Hello ,<b>
+             {authUser}
             </b>
                   
                    
                     </Level.Item>
-                    </Level.Side>
-                    <Level.Side align="right">
                     <Level.Item>
-                    <Link to="/home">
+                    <NavLink to="/home"
+                     style={({ isActive }) =>
+                     isActive ? activeStyle : undefined
+                   }
+                   >
                     Home
-                    </Link>
+                    </NavLink>
                     </Level.Item>
                     {
                         (authUser &&
@@ -53,9 +60,16 @@ function HeaderNav() {
                       
                             
                        
-                    <Link to={`/profile/${authUser.username}`}>
+                    <NavLink to={`/profile/${authUser}`}
+                     style={({ isActive }) =>
+                     isActive ? activeStyle : undefined
+                   }
+                        state={{ 
+                            user:authUser, profile: authUser
+                        }}
+                        >
                     Profile
-                    </Link>
+                    </NavLink>
                     </Level.Item>
                     )
                     }  

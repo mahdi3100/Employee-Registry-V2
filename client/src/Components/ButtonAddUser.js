@@ -35,6 +35,7 @@ function BoxSignUp({ showSignup, setShowSignup }) {
         userone.push(newUser)
         setShowSignup()
 
+         //you may use useContext instead of Component Consumer
         SetNewUser(userone)
     }
     return (

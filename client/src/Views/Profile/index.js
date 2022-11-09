@@ -15,7 +15,7 @@ class ProfileClass extends React.Component {
 
     this.state = {
       fetched: false,//check if fetch return
-      userLoading: false,
+  
       userInfo: {},
       errorFetch: false,
       comments: []
@@ -25,6 +25,7 @@ class ProfileClass extends React.Component {
 
     //Where username profile is located || You can use  useParams by react-route
     //this.getUserProfile = props.location.state.profile
+   
     this.getUserProfile = props.userName;
 
 
@@ -33,11 +34,16 @@ class ProfileClass extends React.Component {
 
     this.getOneUser = this.getOneUser.bind(this);
   }
+  componentDidUpdate(prevProps, prevState){
 
+if(prevProps.userName != this.props.userName){
+  this.getUserProfile = this.props.userName;
+ this.getOneUser()
+}
+  }
   componentDidMount() {
-    //Call fetch getOneUser once component get mounted 
-    (this.state.fetched == false && this.getOneUser());
 
+    (this.state.fetched == false && this.getOneUser());
 
   }
   addNewComment(newComment) {
@@ -47,7 +53,7 @@ class ProfileClass extends React.Component {
   getOneUser() {
 
     let baseURL = process.env.REACT_APP_API_BASE_URL || 'localhost:8787';
-    this.setState({ userLoading: true });
+ 
 
 
     const requestOptions = {
@@ -59,7 +65,7 @@ class ProfileClass extends React.Component {
       .then(res => res.json())
       .then(res => {
 
-        this.setState({ usersLoading: false });
+
 
         if (res["error"] == 1) { return this.setState({ errorFetch: res["error"] }); }
 

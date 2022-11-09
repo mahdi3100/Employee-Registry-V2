@@ -90,12 +90,19 @@ app.use(function (req, res, next) {
 
 
 //END POINTS API
+
+/**
+ * / = case using express as main server to redirect to /index.html build file reacts 
+ * no need of indexrouter when using static serve of react 
+ */
 app.use('/', indexRouter);
-app.use("/deleteuser", deleteuserRouter);
+
+
+app.use("/api/deleteuser", deleteuserRouter);
 
 
 
-app.get("/logout", function (req, res) {
+app.get("/api/logout", function (req, res) {
   console.log("Logout")
   if(req.session)req.session.destroy()
   res.send("0")
@@ -103,11 +110,11 @@ app.get("/logout", function (req, res) {
 
 
 //Fetch API 
-app.use('/signup', signUpRouter)
-app.use('/signin', signInRouter)
-app.use('/upload', uploadRouter);
-app.use('/comment', commentRouter);
-app.use('/users', usersRouter);
+app.use('/api/signup', signUpRouter)
+app.use('/api/signin', signInRouter)
+app.use('/api/upload', uploadRouter);
+app.use('/api/comment', commentRouter);
+app.use('/api/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

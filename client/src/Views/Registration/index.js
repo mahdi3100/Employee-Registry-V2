@@ -40,7 +40,7 @@ class Registration extends React.Component {
             <>
                 <AuthUserContext.Consumer>
                     {({ authUser }) => {
-                    
+                  
                         if(authUser) {return <Navigate to="/home" replace state={authUser} />}
                     }
                     }

@@ -2,11 +2,7 @@ import {Button, Box, Level, Heading } from "react-bulma-components";
 import 'bulma/css/bulma.min.css';
 
 import {
-    BrowserRouter,
-    /*  Switch, replaced with Routes*/
-    Route,
-    Routes,
-    NavLink,/**same use as link bu has more control for style */
+    NavLink,
     Link
   } from "react-router-dom";
   import {useAuth } from "../Context/AuthUser"

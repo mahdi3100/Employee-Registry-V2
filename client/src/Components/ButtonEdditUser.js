@@ -38,7 +38,7 @@ function ButtonEdditUser({ userInfo }) {
                 </Form.Field>
             </Button.Group>
 
-            <BoxSignUp showEditBox={showEditUser} infosuser={userInfo} setShowEditUser={() => setShowEditUser(false)} />
+            <BoxSignUp showEditBox={showEditUser} oldinfosuser={userInfo} setShowEditUser={() => setShowEditUser(false)} />
         </>
     )
 
@@ -46,18 +46,18 @@ function ButtonEdditUser({ userInfo }) {
 }
 
 
-function BoxSignUp({ showEditBox, setShowEditUser, infosuser }) {
+function BoxSignUp({ showEditBox, setShowEditUser, oldinfosuser }) {
 
     const [infoUser, SetInfoUser] = useState([]);
 
     const UpdateSucceed = (InfoUser) => {
 
 
-        infosuser = { ...infosuser, ...InfoUser }
+        oldinfosuser = { ...oldinfosuser, ...InfoUser }
         setShowEditUser()
 
          //you may use useContext instead of Component Consumer
-        SetInfoUser(infosuser)
+        SetInfoUser(oldinfosuser)
        
     }
     return (
@@ -66,7 +66,7 @@ function BoxSignUp({ showEditBox, setShowEditUser, infosuser }) {
             <div className="modal-content">
                 <Box style={{ width: 400, margin: 'auto' }}>
                     <Suspense fallback={<div className="loader is-centered is-loading" style={{ margin: "20px auto", height: "70px", width: "70px" }}></div>}>
-                        <Signup createditUser="update" edituser={infosuser} CreateUpdateSucceed={(newInfoUser) => UpdateSucceed(newInfoUser)} />
+                        <Signup createditUser="update" edituser={oldinfosuser} CreateUpdateSucceed={(newInfoUser) => UpdateSucceed(newInfoUser)} />
                     </Suspense>
 
                 </Box>

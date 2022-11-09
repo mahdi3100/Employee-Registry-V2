@@ -109,13 +109,18 @@ class ImportCSVuiClass extends React.Component {
 
                 </div>
 
+                {
+                    /**
+                     * You can change Consumer with passing useContext as prop in ImportCSVui Component
+                     */
+(this.state.importNewUser.length != 0 &&
+<UserContext.Consumer>
+    {({ /*elementUser, */setMyUser }) => (
 
-                <UserContext.Consumer>
-                    {({ /*elementUser, */setMyUser }) => (
-
-                        setMyUser(this.state.importNewUser)
-                    )}
-                </UserContext.Consumer>
+        setMyUser(this.state.importNewUser)
+    )}
+</UserContext.Consumer>
+                )}
             </>
         )
     }
@@ -125,7 +130,7 @@ const ImportCSVui = (props)=>{
 
     const {logout} = useAuth()
 
-    return (<ImportCSVuiClass logout={logout} />)
+    return (<ImportCSVuiClass {...props} logout={logout} />)
 };
 
 

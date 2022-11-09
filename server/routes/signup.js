@@ -57,11 +57,13 @@ router.post('/', function (req, res, next) {
     //check if is the admin who changed his own info to update sesiion
 
     if (EditUsernameProfile == req.session.user?.username) {
+    
       req.session.user = fromValidate;
     }
 
     //if admin create another user no need to set up his session
     if (!req.body.createditUser) {
+
       req.session.user = fromValidate;
     }
 

@@ -6,7 +6,7 @@ import InsertComment from "../../Components/InsertComment"
 import Comments from "../../Components/Comments"
 import ButtonEdditUser from "../../Components/ButtonEdditUser";
 import AddLoggedUser from "../../Components/AddLoggedUser";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation,useParams } from "react-router-dom";
 import { useAuth } from "../../Context/AuthUser"
 class ProfileClass extends React.Component {
 
@@ -24,7 +24,9 @@ class ProfileClass extends React.Component {
     }
 
     //Where username profile is located || You can use  useParams by react-route
-    this.getUserProfile = props.location.state.profile
+    //this.getUserProfile = props.location.state.profile
+    this.getUserProfile = props.userName;
+
 
 
     this.addNewComment = this.addNewComment.bind(this);
@@ -149,12 +151,12 @@ class ProfileClass extends React.Component {
   }
 }
 const Profile = (props) => {
-  let location = useLocation();
-  let navigate = useNavigate();
-  const { logout } = useAuth()
-  console.log("rrrrrrrr")
-  console.log(location)
-  return (<ProfileClass logout={logout} location={location} navigate={navigate} />)
+  //let location = useLocation();
+ // let navigate = useNavigate();
+  let { logout } = useAuth()
+  let { username } = useParams();
+
+  return (<ProfileClass {...props} userName={username} logout={logout}/>)
 };
 
 export default Profile

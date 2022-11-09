@@ -17,15 +17,18 @@ import {
 } from "react-router-dom";
 
 function RouteApp() {
+    
     const ProtectedRoute = ({ redirectPath = '/', children, }) => {
-        const { state } = useLocation();
-
+     
+        const {authUser} = useAuth();
+        //const { state } = useLocation();
 
         //if user is not logged
-        if (!state) {
+     
+        if (!authUser /*&& !state*/) {
             return <Navigate to={redirectPath} replace />;
         }
-
+  
         return (children) ? children : <Outlet />;
     };
 

@@ -2,15 +2,14 @@ import { Icon, Card, Media, Heading, Content, Button } from "react-bulma-compone
 import 'bulma/css/bulma.min.css';
 import { Icon as Iconify } from '@iconify/react';
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Context/AuthUser";
+//import { useAuth } from "../Context/AuthUser";
 export default function Employees({ usersInfo }) {
 
-  const { authUser } = useAuth();
+  //const { authUser } = useAuth();
   const navigate = useNavigate();
+
   const toProfile = (username) => {
-
-
-    navigate(`/profile/${username}`, { state: { user: authUser, profile: username } })
+    navigate(`/profile/${username}`/*, { state: { user: authUser, profile: username } }*/)
   }
   return (
     usersInfo.map((userInfo, key) => (

@@ -9,7 +9,7 @@ const fileUpload = require('express-fileupload');
 
 
 /** All Rooter execpt LOGOUT */
-//var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var signUpRouter = require('./routes/signup');
 var signInRouter = require('./routes/signin');
@@ -90,11 +90,7 @@ app.use(function (req, res, next) {
 
 
 //END POINTS API
-//app.use('/', indexRouter);
-app.get('/',(req,res)=>{
-  res.sendFile(path.join(__dirname, 'build/index.html'));
-
-});
+app.use('/', indexRouter);
 app.use("/deleteuser", deleteuserRouter);
 
 

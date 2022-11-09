@@ -45,8 +45,7 @@ class HomeClass extends React.Component {
         fetch("http://" + baseURL + "/users", requestOptions)
             .then(res => res.json())
             .then(res => {
-                console.log("RESAULT")
-                console.log(res)
+            
                 this.setState({ emptyResault: false, usersLoading: false });
 
                 if (res["error"] == 1) { return this.setState({ errorFetch: res["error"] }); }
@@ -120,6 +119,6 @@ const Home = (props) => {
     //const navigate = useNavigate();
     const { logout } = useAuth()
 
-    return (<HomeClass logout={logout} />)
+    return (<HomeClass {...props} logout={logout} />)
 };
 export default Home;

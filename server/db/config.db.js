@@ -90,11 +90,27 @@ class mydb {
           const user = await this.connectDB.collection("users");
 
           if (creatededit == "update") {
-            let result = await user.updateOne(
+            
+            //update document of user 
+           await user.updateOne(
               { username: EditUsernameProfile },
               { $set: datauser }
 
+            );
+
+            //update the user of all emmbaded document of comments 
+            await user.updateMany({
+              "comments.user": EditUsernameProfile
+            },
+              { $set:{
+                "comments.$[everyuser].user":datauser.username
+                },
+              },
+                { arrayFilters: [ { "everyuser.user": EditUsernameProfile } ] }
+              
+
             )
+       
 
             return resolve(datauser)
             //return is mondatory

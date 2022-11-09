@@ -24,7 +24,7 @@ class SignupClass extends React.Component {
 
     }
 
-
+    
     this.form = {
       username: null,
       firstname: null,
@@ -38,7 +38,10 @@ class SignupClass extends React.Component {
   }
 
 
-
+  /**
+   * 
+   * @returns State with username
+   */
   submit() {
 
     if (this.props.createditUser != "update") {
@@ -87,12 +90,15 @@ class SignupClass extends React.Component {
           return this.props.logout()
         }
 
+
         if (this.props.createditUser) {
 
           //if admin edit his own profile
-          if (EditUserProfile == localStorage.getItem('username')) {
+          if (EditUserProfile == localStorage.getItem('user')) {
+            //The res = Object
 
-            return this.props.login(res.fromValidate)
+            //call login and will redirect to /home
+            return this.props.login(res.username)
           }
 
           this.props.CreateUpdateSucceed(res)
@@ -101,7 +107,7 @@ class SignupClass extends React.Component {
         } else {
 
 
-          return this.props.login(res.fromValidate)
+          return this.props.login(res.username)
 
 
         }
@@ -192,6 +198,6 @@ class SignupClass extends React.Component {
 const Signup = (props) => {
 
   const { logout, login } = useAuth()
-  return (<SignupClass logout={logout} login={login} />)
+  return (<SignupClass {...props} logout={logout} login={login} />)
 };
 export default Signup;

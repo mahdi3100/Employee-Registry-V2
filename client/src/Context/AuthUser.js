@@ -12,9 +12,11 @@ export const AuthUserContextProvider = (props) => {
    * Data is Object user contains username
    */
   const login = (data) => {
-    setAuthUser(data);
+ 
 
-    navigate("/home", { state: { user: data } });
+    setAuthUser(data );
+
+      navigate("/home", { state: { user: data } });
   };
 
 
@@ -53,23 +55,27 @@ const useLocalStorage = (keyName, defaultValue) => {
     try {
       const value = window.localStorage.getItem(keyName);
       if (value) {
-        return JSON.parse(value);
+        if(value=="null")return null;
+        return value;
       } else {
-        window.localStorage.setItem(keyName, JSON.stringify(defaultValue));
+        window.localStorage.setItem(keyName, defaultValue);
         return defaultValue;
       }
     } catch (err) {
+
       return defaultValue;
     }
   });
   const setValue = (newValue) => {
     try {
 
-      window.localStorage.setItem(keyName, JSON.stringify(newValue));
+      window.localStorage.setItem(keyName, newValue);
+    
     } catch (err) {
       console.log(err)
     }
     setStoredValue(newValue);
+ 
   };
   return [storedValue, setValue];
 };
